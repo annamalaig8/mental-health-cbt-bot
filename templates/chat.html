@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Support Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f6;
+        }
+
+        .chat-container {
+            width: 440px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 0 14px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .chat-box {
+            height: 350px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f9fafc;
+            margin-bottom: 10px;
+        }
+
+        .user {
+            text-align: right;
+            margin: 8px 0;
+        }
+
+        .user span {
+            background: #d1e7ff;
+            padding: 8px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        .bot {
+            text-align: left;
+            margin: 8px 0;
+        }
+
+        .bot span {
+            background: #e8ebf0;
+            padding: 8px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        form {
+            display: flex;
+            gap: 5px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            background: #4a6cf7;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h2>CBT Mental Health Support Bot</h2>
+    <div class="subtitle">
+        You're good. Don’t underestimate yourself.  
+        Take a breath — you’re not alone here.
+    </div>
+
+    <div class="chat-box" id="chatBox">
+        {% for sender, message in chat_history %}
+            {% if sender == "user" %}
+                <div class="user"><span>{{ message }}</span></div>
+            {% else %}
+                <div class="bot"><span>{{ message }}</span></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+    const chatBox = document.getElementById("chatBox");
+    chatBox.scrollTop = chatBox.scrollHeight;
+</script>
+
+</body>
+</html>
 
